@@ -31,15 +31,15 @@ const App = () => {
           getLocation();
         } else {
           console.log('You cannot use Geolocation');
-          setLoading(false); // Set loading to false to stop showing the loading indicator
+          setLoading(false);
         }
       } catch (err) {
         console.warn(err);
-        setLoading(false); // Set loading to false in case of error
+        setLoading(false);
       }
     };
     requestLocationPermission();
-  }, []); // Empty dependency array means this effect will run once after the initial render
+  }, []);
 
   useEffect(() => {
     console.log(location);
