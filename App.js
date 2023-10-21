@@ -8,7 +8,7 @@ import {
   PermissionsAndroid,
 } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
-import {WEATHER_API_KEY} from '.env';
+import {WEATHER_API_KEY} from '@env';
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 const App = () => {
