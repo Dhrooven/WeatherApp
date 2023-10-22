@@ -4,7 +4,10 @@ import Feather from 'react-native-vector-icons/Feather';
 import RowText from '../components/RowText';
 import {WeatherType} from '../utility/WeatherType';
 
-const CurrentWeather = () => {
+const CurrentWeather = ({weatherData}) => {
+  console.log('This is CurrentWeather');
+  console.log(weatherData);
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.container}>
