@@ -14,7 +14,7 @@ export const useGetWeather = () => {
   const fetchWeather = async () => {
     try {
       const res = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}units=metric`,
+        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`,
       );
       const data = await res.json();
       setWeather(data);
@@ -29,7 +29,6 @@ export const useGetWeather = () => {
   const getLocation = async () => {
     Geolocation.getCurrentPosition(
       position => {
-        console.log(position);
         setLat(position.coords.latitude); // Update the Latitude state with the received position
         setLon(position.coords.longitude); // Update the Longitude state with the received position
         setLoading(false); // Set loading to false after getting the location
@@ -70,11 +69,6 @@ export const useGetWeather = () => {
       }
     };
     requestLocationPermission();
-  }, [lat, lon]);
-
-  useEffect(() => {
-    console.log(lat);
-    console.log(lon);
   }, [lat, lon]);
 
   return [loading, errorState, weather];

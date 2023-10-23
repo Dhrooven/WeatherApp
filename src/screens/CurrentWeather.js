@@ -23,18 +23,18 @@ const CurrentWeather = ({weatherData}) => {
           size={100}
           color="yellow"
         />
-        <Text style={styles.tempStyle}>{temp}</Text>
-        <Text style={styles.feels}>{`Feels like: ${feels_like}`}</Text>
+        <Text style={styles.tempStyle}>{`${temp}°`}</Text>
+        <Text style={styles.feels}>{`Feels like: ${feels_like}°`}</Text>
         <RowText
-          text1={`High: ${temp_max}`}
-          text2={`Low: ${temp_min}`}
+          text1={`High: ${temp_max}° `}
+          text2={`Low: ${temp_min}°`}
           bodyStyles={styles.highLowWrapper}
           text1Styles={styles.highLow}
           text2Styles={styles.highLow}
         />
       </View>
       <RowText
-        text1={WeatherType[weatherCondition]}
+        text1={WeatherType[weatherCondition].icon}
         text2={WeatherType[weatherCondition].message}
         bodyStyles={styles.bodyWrapper}
         text1Styles={styles.description}
