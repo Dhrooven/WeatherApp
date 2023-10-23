@@ -5,26 +5,37 @@ import RowText from '../components/RowText';
 import {WeatherType} from '../utility/WeatherType';
 
 const CurrentWeather = ({weatherData}) => {
-  console.log('This is CurrentWeather');
-  console.log(weatherData);
+  const {
+    main: {temp, feels_like, temp_max, temp_min},
+    weather,
+  } = weatherData;
+  const weatherCondition = weather[0].main;
 
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <SafeAreaView
+      style={[
+        styles.wrapper,
+        {backgroundColor: WeatherType[weatherCondition].backgroundColor},
+      ]}>
       <View style={styles.container}>
-        <Feather name="sun" size={100} color="yellow" />
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>Feels like: 8</Text>
+        <Feather
+          name={WeatherType[weatherCondition].icon}
+          size={100}
+          color="yellow"
+        />
+        <Text style={styles.tempStyle}>{temp}</Text>
+        <Text style={styles.feels}>{`Feels like: ${feels_like}`}</Text>
         <RowText
-          text1={'High: 10'}
-          text2={' Low: 5'}
+          text1={`High: ${temp_max}`}
+          text2={`Low: ${temp_min}`}
           bodyStyles={styles.highLowWrapper}
           text1Styles={styles.highLow}
           text2Styles={styles.highLow}
         />
       </View>
       <RowText
-        text1={'Its Sunny'}
-        text2={'Its perfect T-Shirt Weather'}
+        text1={WeatherType[weatherCondition]}
+        text2={WeatherType[weatherCondition].message}
         bodyStyles={styles.bodyWrapper}
         text1Styles={styles.description}
         text2Styles={styles.message}
@@ -43,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  temp: {
+  tempStyle: {
     color: 'white',
     fontSize: 48,
   },
